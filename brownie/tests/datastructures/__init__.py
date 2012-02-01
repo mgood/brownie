@@ -27,6 +27,14 @@ class TestMissing(TestBase):
     def repr(self):
         Assert(repr(missing)) == 'missing'
 
+    @test
+    def pickleable(self):
+        import pickle
+        pickled = pickle.dumps(missing)
+        unpickled = pickle.loads(pickled)
+        if unpickled is not missing:
+            raise AssertionError()
+
 
 class TestStackedObject(TestBase):
     @test

@@ -19,6 +19,10 @@ class missing(object):
     def __repr__(self):
         return 'missing'
 
+    # pickle support -- just return our global name
+    def __reduce__(self):
+        return 'missing'
+
 #: Sentinel object which can be used instead of ``None``. This is useful if
 #: you have optional parameters to which a user can pass ``None`` e.g. in
 #: datastructures.
